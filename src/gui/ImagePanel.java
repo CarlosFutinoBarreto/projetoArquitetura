@@ -14,6 +14,7 @@ public class ImagePanel extends JPanel {
 	private void setImage(String path) {
 		ImageIcon ic = new ImageIcon(path);
 		this.img = ic.getImage();
+		this.setSize(38, 38);
 	}
 	
 	public ImagePanel(String path) {
