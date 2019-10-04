@@ -5,6 +5,12 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
 
+import command.Command;
+import command.DownCommand;
+import command.LeftCommand;
+import command.RightCommand;
+import command.ShootCommand;
+import command.UpCommand;
 import gameElements.Arrow;
 import gameElements.GameCharacter;
 import gameElements.ScoreBoard;
@@ -18,6 +24,12 @@ public class GamePanel extends JPanel{
 	private ImagePanel[][] panels;
 	private GameCharacter gameCharacter;
 	private ScoreBoard scoreBoard;
+
+	private Command up;
+	private Command down;
+	private Command left;
+	private Command right;
+	private Command shoot;
 	
 	public GamePanel(int qtLinhas) {
 		super();
@@ -38,6 +50,11 @@ public class GamePanel extends JPanel{
 			}
 		}
 		
+		this.up = new UpCommand();
+		this.down = new DownCommand();
+		this.left = new LeftCommand();
+		this.right = new RightCommand();
+		this.shoot = new ShootCommand();
 	}
 	
 	public void attach(Observer o) {
@@ -89,5 +106,47 @@ public class GamePanel extends JPanel{
 		ImagePanel imagePanel = this.panels[y][x];
 		imagePanel.changeImage(path);
 	}
+
+	public Command getUp() {
+		return up;
+	}
+
+	public void setUp(Command up) {
+		this.up = up;
+	}
+
+	public Command getDown() {
+		return down;
+	}
+
+	public void setDown(Command down) {
+		this.down = down;
+	}
+
+	public Command getLeft() {
+		return left;
+	}
+
+	public void setLeft(Command left) {
+		this.left = left;
+	}
+
+	public Command getRight() {
+		return right;
+	}
+
+	public void setRight(Command right) {
+		this.right = right;
+	}
+
+	public Command getShoot() {
+		return shoot;
+	}
+
+	public void setShoot(Command shoot) {
+		this.shoot = shoot;
+	}
+	
+	
 	
 }
